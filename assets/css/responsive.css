@@ -1,0 +1,329 @@
+/* ==========================================================================
+   VERA — Wellness & Recovery Management
+   Responsive Design & Breakpoints (320px to 2560px)
+   ========================================================================== */
+
+/* --- Strict Global Overflow Control --- */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* --- Large Desktop / Widescreen (> 1280px) --- */
+@media (min-width: 1280px) {
+  .hero-grid {
+    gap: 4.5rem;
+  }
+}
+
+/* --- Base Laptops & Tablets Adjustments (<= 1024px) --- */
+@media (max-width: 1024px) {
+  :root {
+    --navbar-height: 70px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-composition {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .featured-resource-card {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   TABLET & 1024PX VIEWPORTS (601px to 1024px)
+   Align 2 cards in one row and center the trailing odd-numbered card
+   ========================================================================== */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .card-grid-tab-center,
+  .stats-grid,
+  .workflow-grid,
+  .resource-grid,
+  .resources-grid,
+  .pillars-grid,
+  .principles-grid,
+  .features-grid,
+  .goals-grid,
+  .routines-grid,
+  .insights-grid,
+  .audience-grid,
+  .export-grid,
+  .report-meta-grid,
+  .related-grid,
+  .schedule-grid,
+  .security-pillars-grid,
+  .weekly-summary-grid,
+  .charts-grid,
+  .two-col-tab-grid,
+  .metric-checkboxes-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--card-grid-gap, 1.5rem) !important;
+  }
+
+  /* Center the last odd-numbered card while maintaining exact single-column width */
+  .card-grid-tab-center > :last-child:nth-child(odd),
+  .stats-grid > :last-child:nth-child(odd),
+  .workflow-grid > :last-child:nth-child(odd),
+  .resource-grid > :last-child:nth-child(odd),
+  .resources-grid > :last-child:nth-child(odd),
+  .pillars-grid > :last-child:nth-child(odd),
+  .principles-grid > :last-child:nth-child(odd),
+  .features-grid > :last-child:nth-child(odd),
+  .goals-grid > :last-child:nth-child(odd),
+  .routines-grid > :last-child:nth-child(odd),
+  .insights-grid > :last-child:nth-child(odd),
+  .audience-grid > :last-child:nth-child(odd),
+  .export-grid > :last-child:nth-child(odd),
+  .report-meta-grid > :last-child:nth-child(odd),
+  .related-grid > :last-child:nth-child(odd),
+  .schedule-grid > :last-child:nth-child(odd),
+  .security-pillars-grid > :last-child:nth-child(odd),
+  .weekly-summary-grid > :last-child:nth-child(odd),
+  .charts-grid > :last-child:nth-child(odd),
+  .two-col-tab-grid > :last-child:nth-child(odd),
+  .metric-checkboxes-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / span 2 !important;
+    width: 100% !important;
+    max-width: calc(50% - (var(--card-grid-gap, 1.5rem) / 2)) !important;
+    justify-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* --- Mobile Navigation Switch (<= 920px) --- */
+@media (max-width: 920px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .navbar-actions .btn {
+    display: none;
+  }
+}
+
+/* --- General Tablet & Mobile Spacing (<= 768px) --- */
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .section-sm {
+    padding: 2rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .hero-section {
+    padding: 3rem 0 3.5rem 0;
+  }
+
+  .hero-image-frame img {
+    height: 320px;
+  }
+
+  .hero-floating-card {
+    display: none; /* Hide on smaller screens to prevent clipping */
+  }
+
+  .report-document {
+    padding: 1.5rem;
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .chart-box {
+    padding: 1.2rem;
+  }
+
+  .chart-canvas-wrapper {
+    height: 220px;
+  }
+}
+
+/* --- Mobile Viewports (<= 600px) --- */
+@media (max-width: 600px) {
+  .card-grid-tab-center,
+  .stats-grid,
+  .workflow-grid,
+  .resource-grid,
+  .resources-grid,
+  .pillars-grid,
+  .principles-grid,
+  .features-grid,
+  .goals-grid,
+  .routines-grid,
+  .insights-grid,
+  .audience-grid,
+  .export-grid,
+  .report-meta-grid,
+  .related-grid,
+  .schedule-grid,
+  .security-pillars-grid,
+  .weekly-summary-grid,
+  .charts-grid,
+  .two-col-tab-grid,
+  .metric-checkboxes-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card-grid-tab-center > :last-child:nth-child(odd),
+  .stats-grid > :last-child:nth-child(odd),
+  .workflow-grid > :last-child:nth-child(odd),
+  .resource-grid > :last-child:nth-child(odd),
+  .resources-grid > :last-child:nth-child(odd),
+  .pillars-grid > :last-child:nth-child(odd),
+  .principles-grid > :last-child:nth-child(odd),
+  .features-grid > :last-child:nth-child(odd),
+  .goals-grid > :last-child:nth-child(odd),
+  .routines-grid > :last-child:nth-child(odd),
+  .insights-grid > :last-child:nth-child(odd),
+  .audience-grid > :last-child:nth-child(odd),
+  .export-grid > :last-child:nth-child(odd),
+  .report-meta-grid > :last-child:nth-child(odd),
+  .related-grid > :last-child:nth-child(odd),
+  .schedule-grid > :last-child:nth-child(odd),
+  .security-pillars-grid > :last-child:nth-child(odd),
+  .weekly-summary-grid > :last-child:nth-child(odd),
+  .charts-grid > :last-child:nth-child(odd),
+  .two-col-tab-grid > :last-child:nth-child(odd),
+  .metric-checkboxes-grid > :last-child:nth-child(odd) {
+    grid-column: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* --- Small Mobile Phones (<= 480px, down to 320px) --- */
+@media (max-width: 480px) {
+  .container,
+  .container-narrow {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-headline {
+    font-size: 1.95rem;
+  }
+
+  .hero-supporting {
+    font-size: 1rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-progress {
+    margin-bottom: 1.75rem;
+  }
+
+  .wizard-step-node {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .toast {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .modal-card {
+    padding: 1.5rem;
+  }
+
+  .segmented-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Print Stylesheet for Reports --- */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .navbar-vera,
+  .footer-vera,
+  .toast-container,
+  .btn,
+  .filter-bar,
+  .no-print {
+    display: none !important;
+  }
+
+  .page-wrapper {
+    padding-top: 0 !important;
+  }
+
+  .report-document {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}

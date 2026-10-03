@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Access & Secure Sharing — VERA</title>
+  <meta name="description" content="Manage granular client and professional sharing permissions. Create time-limited access tokens and revoke access at any time.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky SaaS Navbar -->
+  <header class="navbar-vera" role="banner">
+    <div class="container navbar-container">
+      <a href="index.html" class="navbar-brand" aria-label="VERA Home">
+        <span class="brand-icon">V</span>
+        <span>VERA</span>
+      </a>
+
+      <!-- Desktop Nav Menu (No dropdowns, includes Contact) -->
+      <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="my-plan.html" class="nav-link">My Plan</a>
+        <a href="track.html" class="nav-link">Track</a>
+        <a href="insights.html" class="nav-link">Insights</a>
+        <a href="reports.html" class="nav-link">Reports</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right Navbar Controls (Sign Up & Mobile Menu) -->
+      <div class="navbar-actions">
+        <a href="signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+        <button type="button" class="hamburger-btn" id="hamburgerToggleBtn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-nav-drawer">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="navbar-brand">
+          <span class="brand-icon">V</span>
+          <span>VERA</span>
+        </a>
+        <button type="button" class="mobile-close-btn" id="closeMobileNavBtn" aria-label="Close menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="my-plan.html" class="mobile-nav-link">My Plan</a>
+        <a href="track.html" class="mobile-nav-link">Track</a>
+        <a href="insights.html" class="mobile-nav-link">Insights</a>
+        <a href="reports.html" class="mobile-nav-link">Reports</a>
+        <a href="resources.html" class="mobile-nav-link">Resources</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <a href="signup.html" class="btn btn-primary" style="width: 100%; text-align: center;">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-wrapper" id="mainContent">
+    <div class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
+
+      <!-- Page Header -->
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.5rem;">
+        <div>
+          <span class="section-tag">Access Architecture</span>
+          <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Client Access & Secure Sharing</h1>
+          <p style="margin: 0; font-size: 1.05rem; color: var(--text-secondary);">
+            Grant granular viewing permissions to trusted professionals. You maintain complete sovereignty to revoke access anytime.
+          </p>
+        </div>
+        <button type="button" class="btn btn-primary" id="btnOpenShareModal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          Create Share Invitation
+        </button>
+      </div>
+
+      <!-- Trust & Privacy Overview Strip -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Active Shares</span>
+            <span class="badge badge-active">Live</span>
+          </div>
+          <div class="stat-value">2</div>
+          <div class="stat-meta" style="color: var(--text-secondary);">1 coach • 1 practitioner</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Default Permission</span>
+            <span class="badge badge-sage">Restricted</span>
+          </div>
+          <div class="stat-value">Private</div>
+          <div class="stat-meta" style="color: var(--text-muted);">Journal notes hidden by default</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Revocation Status</span>
+            <span class="badge badge-teal">Instant</span>
+          </div>
+          <div class="stat-value">1-Click</div>
+          <div class="stat-meta" style="color: var(--status-active);">Immediately invalidates tokens</div>
+        </div>
+      </div>
+
+      <!-- ACTIVE SHARED ACCESS LIST -->
+      <section style="margin-bottom: 3.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <div>
+            <h2 style="font-size: 1.35rem; margin-bottom: 0.25rem;">Authorized Recipients & Active Tokens</h2>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Professionals currently granted viewing access to your records.</p>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Recipient</th>
+                <th>Permission Level & Sections</th>
+                <th>Created</th>
+                <th>Expires</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="sharedAccessTableBody">
+              <!-- Populated dynamically via sharing.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PRIVACY CONTROLS & ARCHITECTURE CARD -->
+      <section class="card card-warm">
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem;">
+          <svg width="22" height="22" style="color: var(--accent-sage);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <h3 style="font-size: 1.25rem; margin: 0;">How VERA Access Security Works</h3>
+        </div>
+
+        <div class="security-pillars-grid card-grid-tab-center" style="margin-top: 1rem;">
+          <div>
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.35rem;">1. Scoped Cryptographic Tokens</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+              Share URLs contain randomly generated, single-recipient access tokens that only expose the specific data tables you explicitly ticked.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.35rem;">2. Enforced Expiration</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+              Access automatically terminates after your chosen duration (24h, 7 days, 30 days) unless you choose to re-enable it.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.35rem;">3. Instant Client-Side Revoke</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+              Clicking "Revoke" instantly terminates access. Subsequent visits to that URL will see an expired access notice.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Create Share Modal -->
+  <div class="modal-overlay" id="createShareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="shareModalTitle" style="font-size: 1.3rem;">Create Secure Sharing Invitation</h3>
+        <button type="button" class="modal-close" id="btnCloseShareModal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+
+      <form id="createShareForm">
+        <div class="form-group">
+          <label class="form-label" for="shareRecipientName">Recipient Name</label>
+          <input type="text" id="shareRecipientName" class="form-control" placeholder="e.g. Dr. Marcus Vance or Coach Sarah" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="shareRecipientEmail">Recipient Email Address</label>
+          <input type="email" id="shareRecipientEmail" class="form-control" placeholder="recipient@domain.com" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="shareRecipientRole">Professional Role</label>
+            <select id="shareRecipientRole" class="form-select">
+              <option value="Wellness Practitioner">Wellness Practitioner</option>
+              <option value="Movement Coach">Movement Coach</option>
+              <option value="Personal Trainer">Personal Trainer</option>
+              <option value="Lifestyle Therapist">Lifestyle Therapist</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="shareDuration">Access Duration</label>
+            <select id="shareDuration" class="form-select">
+              <option value="24 Hours">24 Hours</option>
+              <option value="7 Days" selected>7 Days</option>
+              <option value="30 Days">30 Days</option>
+              <option value="90 Days">90 Days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="shareAccessLevel">Permission Scope</label>
+          <select id="shareAccessLevel" class="form-select">
+            <option value="View Selected Metrics">View Selected Metrics (Recommended)</option>
+            <option value="View Summary Only">View Summary Only</option>
+            <option value="View Reports & Trends">View Reports & Trends</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Authorize Specific Sections:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.5rem;">
+            <label class="custom-check-group">
+              <input type="checkbox" id="permCheckins" checked>
+              <span style="font-size: 0.88rem;">Daily Check-Ins</span>
+            </label>
+            <label class="custom-check-group">
+              <input type="checkbox" id="permSleep" checked>
+              <span style="font-size: 0.88rem;">Sleep Duration</span>
+            </label>
+            <label class="custom-check-group">
+              <input type="checkbox" id="permMobility" checked>
+              <span style="font-size: 0.88rem;">Mobility Logs</span>
+            </label>
+            <label class="custom-check-group">
+              <input type="checkbox" id="permReports" checked>
+              <span style="font-size: 0.88rem;">Weekly Reports</span>
+            </label>
+            <label class="custom-check-group">
+              <input type="checkbox" id="permNotes">
+              <span style="font-size: 0.88rem; color: var(--status-pending);">Private Journal Notes</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('createShareModal').classList.remove('open')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Generate Invitation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="footer-vera" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-brand">
+            <span class="brand-icon">V</span>
+            <span>VERA</span>
+          </a>
+          <p>Understand your recovery. Build better days with quiet, privacy-conscious wellness tracking.</p>
+          <div style="margin-top: 1.2rem; font-size: 0.8rem; color: var(--text-muted);">
+            Calm + Trust + Clarity + Progress + Privacy
+          </div>
+          <!-- Social Icons -->
+          <div class="footer-social-links">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow VERA on X / Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow VERA on Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Connect with VERA on LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Watch VERA on YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Experience</h5>
+          <ul class="footer-links">
+            <li><a href="my-plan.html">My Plan & Goals</a></li>
+            <li><a href="track.html">Daily Check-In</a></li>
+            <li><a href="insights.html">Patterns & Trends</a></li>
+            <li><a href="reports.html">Reports & Exports</a></li>
+            <li><a href="sharing.html">Client Access Control</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul class="footer-links">
+            <li><a href="resources.html">Recovery Guides</a></li>
+            <li><a href="resources.html">Sleep & Rest</a></li>
+            <li><a href="resources.html">Active Mobility</a></li>
+            <li><a href="contact.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="coming-soon.html">Wearable Integrations (Roadmap)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform & Trust</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">Why VERA</a></li>
+            <li><a href="about.html#approach">Our Approach</a></li>
+            <li><a href="contact.html">Professional Inquiries</a></li>
+            <li><a href="contact.html#support">Support</a></li>
+            <li><a href="login.html">Member Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer-box" style="margin-bottom: 2.5rem;">
+        <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <div>
+          <strong>Important Product Notice:</strong> VERA is a personal wellness and recovery management platform designed for routine organization and self-reflection. It is not an emergency medical service, diagnostic tool, or medical treatment device. Always consult licensed healthcare providers regarding medical conditions.
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 VERA Wellness Systems. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="about.html">Privacy Philosophy</a>
+          <a href="contact.html">Security Architecture</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/sharing.js"></script>
+  <script src="assets/js/resources.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

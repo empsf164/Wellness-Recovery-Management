@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Data Export — VERA Wellness & Recovery</title>
+  <meta name="description" content="Generate comprehensive recovery and routine reports. Export personal progress in PDF, CSV, or JSON formats.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky SaaS Navbar -->
+  <header class="navbar-vera" role="banner">
+    <div class="container navbar-container">
+      <a href="index.html" class="navbar-brand" aria-label="VERA Home">
+        <span class="brand-icon">V</span>
+        <span>VERA</span>
+      </a>
+
+      <!-- Desktop Nav Menu (No dropdowns, includes Contact) -->
+      <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="my-plan.html" class="nav-link">My Plan</a>
+        <a href="track.html" class="nav-link">Track</a>
+        <a href="insights.html" class="nav-link">Insights</a>
+        <a href="reports.html" class="nav-link active">Reports</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right Navbar Controls (Sign Up & Mobile Menu) -->
+      <div class="navbar-actions">
+        <a href="signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+        <button type="button" class="hamburger-btn" id="hamburgerToggleBtn" aria-label="Open mobile menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-nav-drawer">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="navbar-brand">
+          <span class="brand-icon">V</span>
+          <span>VERA</span>
+        </a>
+        <button type="button" class="mobile-close-btn" id="closeMobileNavBtn" aria-label="Close menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="my-plan.html" class="mobile-nav-link">My Plan</a>
+        <a href="track.html" class="mobile-nav-link">Track</a>
+        <a href="insights.html" class="mobile-nav-link">Insights</a>
+        <a href="reports.html" class="mobile-nav-link active">Reports</a>
+        <a href="resources.html" class="mobile-nav-link">Resources</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <a href="signup.html" class="btn btn-primary" style="width: 100%; text-align: center;">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-wrapper" id="mainContent">
+    <div class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
+
+      <!-- Header -->
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.5rem;">
+        <div>
+          <span class="section-tag">Document Synthesis</span>
+          <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Recovery & Progress Reports</h1>
+          <p style="margin: 0; font-size: 1.05rem; color: var(--text-secondary);">
+            Generate publication-ready summaries of your routines and exports in open data formats.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="sharing.html" class="btn btn-secondary">Manage Sharing Permissions</a>
+        </div>
+      </div>
+
+      <!-- SECTION 1: REPORT BUILDER CONFIGURATION (#progress-report) -->
+      <section id="progress-report" class="card card-warm" style="margin-bottom: 3.5rem; scroll-margin-top: 6rem;">
+        <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Configure Report Parameters</h2>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem;">
+          Select the timeframe and wellness metrics to include in your synthesized document.
+        </p>
+
+        <form id="reportConfigForm">
+          <div class="card-grid-tab-center" style="margin-bottom: 1.5rem;">
+            
+            <div class="form-group">
+              <label class="form-label" for="reportTypeSelect">Report Type</label>
+              <select id="reportTypeSelect" class="form-select">
+                <option value="Weekly Review & Cadence Report">Weekly Review</option>
+                <option value="Monthly Progress & Consistency Summary">Monthly Progress</option>
+                <option value="Routine Adherence Summary">Routine Summary</option>
+                <option value="Activity & Mobility Log">Activity Summary</option>
+                <option value="Custom Recovery Archive">Custom Report</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reportDateRangeSelect">Observation Date Range</label>
+              <select id="reportDateRangeSelect" class="form-select">
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+                <option value="90d">Last 90 Days</option>
+                <option value="custom">Custom Date Range</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Metric Inclusion Checkboxes -->
+          <div class="form-group">
+            <label class="form-label">Include In Document:</label>
+            <div class="metric-checkboxes-grid card-grid-tab-center" style="margin-top: 0.5rem;">
+              <label class="custom-check-group">
+                <input type="checkbox" id="incCheckins" checked>
+                <span style="font-size: 0.9rem; font-weight: 500;">Check-in History</span>
+              </label>
+              <label class="custom-check-group">
+                <input type="checkbox" id="incSleep" checked>
+                <span style="font-size: 0.9rem; font-weight: 500;">Sleep Entries</span>
+              </label>
+              <label class="custom-check-group">
+                <input type="checkbox" id="incActivities" checked>
+                <span style="font-size: 0.9rem; font-weight: 500;">Activities Log</span>
+              </label>
+              <label class="custom-check-group">
+                <input type="checkbox" id="incGoals" checked>
+                <span style="font-size: 0.9rem; font-weight: 500;">Active Goals</span>
+              </label>
+              <label class="custom-check-group">
+                <input type="checkbox" id="incNotes" checked>
+                <span style="font-size: 0.9rem; font-weight: 500;">Journal Notes</span>
+              </label>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+            <button type="submit" class="btn btn-primary" id="btnGenerateReport">Generate Live Preview</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- SECTION 2: REPORT PREVIEW & EXPORT ACTIONS (#export-data) -->
+      <section id="export-data" style="margin-bottom: 4rem; scroll-margin-top: 6rem;">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Document Preview</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Review generated document or export to your local device.</p>
+          </div>
+          
+          <!-- Export Buttons -->
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary btn-sm btn-export-pdf">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Export PDF
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm btn-export-csv">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
+              Export CSV
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm btn-export-json">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              Export JSON
+            </button>
+          </div>
+        </div>
+
+        <!-- Rendered Document View Container -->
+        <div id="reportPreviewContainer">
+          
+          <div class="report-document" id="printableReportDoc">
+            <div class="report-doc-header">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <span class="brand-icon" style="width: 24px; height: 24px; font-size: 0.75rem;">V</span>
+                  <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem; letter-spacing: 0.05em;">VERA</span>
+                </div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.2rem;">Weekly Review & Cadence Report</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Personal Recovery & Routine Summary</p>
+              </div>
+              <div style="text-align: right;">
+                <span class="badge badge-sage">Verified Report</span>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">Generated on Oct 03, 2026</div>
+              </div>
+            </div>
+
+            <div class="report-meta-grid">
+              <div class="report-meta-item">
+                <div class="report-meta-label">Member / Client</div>
+                <div style="font-weight: 700; color: var(--text-primary);">Elena Rostova</div>
+              </div>
+              <div class="report-meta-item">
+                <div class="report-meta-label">Observation Timeframe</div>
+                <div style="font-weight: 600; color: var(--text-primary);">Last 7 Days (Sep 27 – Oct 03, 2026)</div>
+              </div>
+              <div class="report-meta-item">
+                <div class="report-meta-label">Overall Routine Adherence</div>
+                <div style="font-weight: 700; color: var(--accent-sage);">88% Consistent</div>
+              </div>
+            </div>
+
+            <div class="report-doc-section">
+              <h4 style="font-size: 1.1rem; font-weight: 700;">Executive Summary</h4>
+              <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary);">
+                Over the observation period, self-reported energy held steady at an average of 7.8/10. Evening recovery routine completion reached 88%, coinciding with higher reported rest satisfaction. Daily mobility sessions were maintained consistently across all planned training days.
+              </p>
+            </div>
+
+            <div class="report-doc-section">
+              <h4 style="font-size: 1.1rem; font-weight: 700;">Self-Reported Daily Check-Ins</h4>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Energy</th>
+                      <th>Rest Perception</th>
+                      <th>Recovery State</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Oct 03, 2026</td><td><span class="badge badge-sage">8 / 10</span></td><td>Well Rested</td><td>Strong & Focused</td></tr>
+                    <tr><td>Oct 02, 2026</td><td><span class="badge badge-sage">8 / 10</span></td><td>Well Rested</td><td>Steady</td></tr>
+                    <tr><td>Oct 01, 2026</td><td><span class="badge badge-teal">6 / 10</span></td><td>Moderate Rest</td><td>Calm</td></tr>
+                    <tr><td>Sep 30, 2026</td><td><span class="badge badge-sage">7 / 10</span></td><td>Well Rested</td><td>Refreshed</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="report-doc-section">
+              <h4 style="font-size: 1.1rem; font-weight: 700;">Completed Recovery Activities</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;">
+                <span class="badge badge-sage" style="padding: 0.45rem 0.8rem;">Daily Mobility Routine (7 sessions)</span>
+                <span class="badge badge-sage" style="padding: 0.45rem 0.8rem;">Mindful Hydration Target (7/7 days)</span>
+                <span class="badge badge-teal" style="padding: 0.45rem 0.8rem;">Evening Breathwork (5 sessions)</span>
+                <span class="badge badge-warm" style="padding: 0.45rem 0.8rem;">Restorative Walk (4 sessions)</span>
+              </div>
+            </div>
+
+            <div class="report-doc-section">
+              <h4 style="font-size: 1.1rem; font-weight: 700;">Active Goals Status</h4>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; padding: 0;">
+                <li style="display: flex; justify-content: space-between; font-size: 0.9rem; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                  <span>Nervous System Rest & 8h Sleep Consistency</span>
+                  <strong style="color: var(--accent-sage);">72% Completed</strong>
+                </li>
+                <li style="display: flex; justify-content: space-between; font-size: 0.9rem; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                  <span>Post-Movement Joint Mobility Routine</span>
+                  <strong style="color: var(--accent-sage);">85% Completed</strong>
+                </li>
+              </ul>
+            </div>
+
+            <div class="report-doc-section">
+              <h4 style="font-size: 1.1rem; font-weight: 700;">Selected Reflection Notes</h4>
+              <blockquote style="border-left: 3px solid var(--accent-sage); padding-left: 1rem; margin: 0; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                "Sticking with the 10:00 PM digital winding down routine noticeably reduced morning grogginess. Mobility work before bed helped hip tightness from sitting."
+              </blockquote>
+            </div>
+
+            <div class="disclaimer-box" style="margin-top: 2rem;">
+              <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <div>
+                <strong>Confidential Wellness Record:</strong> This report reflects self-reported routine tracking and personal wellness observations. It does not constitute a clinical diagnosis or medical treatment plan.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 3: SHARED REPORTS BANNER (#shared-reports) -->
+      <section id="shared-reports" class="card" style="scroll-margin-top: 6rem; background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+          <div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem;">Need to share reports with a coach or therapist?</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; max-width: 580px;">
+              Create encrypted, time-limited viewing invitations with granular access controls. You retain full revocation rights at any time.
+            </p>
+          </div>
+          <a href="sharing.html" class="btn btn-primary">Go to Secure Sharing &rarr;</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer-vera" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-brand">
+            <span class="brand-icon">V</span>
+            <span>VERA</span>
+          </a>
+          <p>Understand your recovery. Build better days with quiet, privacy-conscious wellness tracking.</p>
+          <div style="margin-top: 1.2rem; font-size: 0.8rem; color: var(--text-muted);">
+            Calm + Trust + Clarity + Progress + Privacy
+          </div>
+          <!-- Social Icons -->
+          <div class="footer-social-links">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow VERA on X / Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Follow VERA on Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Connect with VERA on LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Watch VERA on YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Experience</h5>
+          <ul class="footer-links">
+            <li><a href="my-plan.html">My Plan & Goals</a></li>
+            <li><a href="track.html">Daily Check-In</a></li>
+            <li><a href="insights.html">Patterns & Trends</a></li>
+            <li><a href="reports.html">Reports & Exports</a></li>
+            <li><a href="sharing.html">Client Access Control</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul class="footer-links">
+            <li><a href="resources.html">Recovery Guides</a></li>
+            <li><a href="resources.html">Sleep & Rest</a></li>
+            <li><a href="resources.html">Active Mobility</a></li>
+            <li><a href="contact.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="coming-soon.html">Wearable Integrations (Roadmap)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform & Trust</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">Why VERA</a></li>
+            <li><a href="about.html#approach">Our Approach</a></li>
+            <li><a href="contact.html">Professional Inquiries</a></li>
+            <li><a href="contact.html#support">Support</a></li>
+            <li><a href="login.html">Member Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer-box" style="margin-bottom: 2.5rem;">
+        <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <div>
+          <strong>Important Product Notice:</strong> VERA is a personal wellness and recovery management platform designed for routine organization and self-reflection. It is not an emergency medical service, diagnostic tool, or medical treatment device. Always consult licensed healthcare providers regarding medical conditions.
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 VERA Wellness Systems. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="about.html">Privacy Philosophy</a>
+          <a href="contact.html">Security Architecture</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/exports.js"></script>
+  <script src="assets/js/reports.js"></script>
+  <script src="assets/js/resources.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
