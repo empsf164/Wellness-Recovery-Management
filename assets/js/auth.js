@@ -191,10 +191,38 @@
     });
   }
 
+  // Handle Password Visibility Toggles
+  function initPasswordToggles() {
+    document.querySelectorAll('.password-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const wrap = btn.closest('.password-input-wrap');
+        if (!wrap) return;
+        const input = wrap.querySelector('input');
+        if (!input) return;
+        const eyeShow = btn.querySelector('.eye-show');
+        const eyeHide = btn.querySelector('.eye-hide');
+
+        if (input.type === 'password') {
+          input.type = 'text';
+          if (eyeShow) eyeShow.style.display = 'none';
+          if (eyeHide) eyeHide.style.display = 'block';
+          btn.setAttribute('aria-label', 'Hide password');
+        } else {
+          input.type = 'password';
+          if (eyeShow) eyeShow.style.display = 'block';
+          if (eyeHide) eyeHide.style.display = 'none';
+          btn.setAttribute('aria-label', 'Show password');
+        }
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initLoginForm();
     initSignupForm();
     initForgotPasswordForm();
+    initPasswordToggles();
   });
 
   window.VeraAuth = {

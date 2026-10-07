@@ -63,7 +63,7 @@
         progressBar.style.width = `${((currentStep - 1) / (totalSteps - 1)) * 100}%`;
       }
 
-      if (btnPrev) btnPrev.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+      if (btnPrev) btnPrev.style.display = currentStep === 1 ? 'none' : 'inline-flex';
       if (btnNext) btnNext.style.display = currentStep === totalSteps ? 'none' : 'inline-flex';
       if (btnSave) btnSave.style.display = currentStep === totalSteps ? 'inline-flex' : 'none';
 

@@ -230,6 +230,16 @@ img, svg {
   margin-right: auto;
 }
 
+.text-center {
+  text-align: center !important;
+}
+
+.text-center .section-tag,
+.section-header.text-center .section-tag {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .section-tag {
   display: inline-flex;
   align-items: center;
@@ -788,11 +798,17 @@ img, svg {
   margin-bottom: 2.2rem;
 }
 
-.hero-actions {
+.hero-actions,
+.final-cta-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2.5rem;
+}
+
+.final-cta-actions {
+  margin-bottom: 0;
+  justify-content: center;
 }
 
 /* Hero Composition Card */
@@ -1136,11 +1152,14 @@ img, svg {
 .footer-links a {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  transition: color var(--transition-fast);
+  text-decoration: none;
+  display: inline-block;
+  transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .footer-links a:hover {
   color: var(--accent-sage);
+  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -1153,6 +1172,17 @@ img, svg {
   gap: 1rem;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.footer-bottom a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom a:hover {
+  color: var(--accent-sage);
+  text-decoration: underline;
 }
 
 /* --- Social Icons & Mobile Direct Links --- */
@@ -1198,4 +1228,57 @@ img, svg {
 .mobile-nav-link.active {
   background-color: var(--bg-secondary);
   color: var(--accent-sage);
+}
+
+/* --- Auth Links & Password Input Wrap --- */
+.auth-link {
+  color: var(--accent-sage);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast), text-decoration var(--transition-fast);
+}
+
+.auth-link:hover {
+  color: var(--accent-sage-dark, #3b5d52);
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-wrap .form-control {
+  padding-right: 2.75rem;
+  width: 100%;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 0.35rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.password-toggle-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+
+.password-toggle-btn:focus-visible {
+  outline: 2px solid var(--accent-sage);
+  color: var(--text-primary);
 }

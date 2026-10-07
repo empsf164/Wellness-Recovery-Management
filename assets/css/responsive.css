@@ -160,7 +160,21 @@ html, body {
   }
 
   .hero-floating-card {
-    display: none; /* Hide on smaller screens to prevent clipping */
+    display: block !important;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-floating-card-1 {
+    bottom: -15px;
+    left: 8px;
+    max-width: 230px;
+  }
+
+  .hero-floating-card-2 {
+    top: 15px;
+    right: 8px;
+    max-width: 210px;
   }
 
   .report-document {
@@ -244,6 +258,54 @@ html, body {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  /* Pre-Footer Final CTA Buttons Same Size on Mobile */
+  .final-cta-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 0.85rem;
+  }
+
+  .final-cta-actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  /* Wizard Navigation Buttons Aligned 1 by 1 in Same Size */
+  .wizard-nav-actions {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .wizard-nav-actions .btn,
+  .wizard-nav-forward,
+  .wizard-nav-forward .btn,
+  #wizardPrevBtn,
+  #wizardNextBtn,
+  #wizardSaveBtn {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .wizard-confirmation-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .wizard-confirmation-actions .btn {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
 }
 
 /* --- Small Mobile Phones (<= 480px, down to 320px) --- */
@@ -264,6 +326,30 @@ html, body {
 
   .hero-actions .btn {
     width: 100%;
+  }
+
+  .hero-floating-card {
+    display: block !important;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .hero-floating-card-1 {
+    bottom: -10px;
+    left: 6px;
+    max-width: 195px;
+  }
+
+  .hero-floating-card-2 {
+    top: 8px;
+    right: 6px;
+    max-width: 185px;
+  }
+
+  .back-to-top-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
   }
 
   .activity-grid {
